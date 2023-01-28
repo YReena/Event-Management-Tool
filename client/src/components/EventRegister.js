@@ -72,7 +72,7 @@ const EventRegister = () => {
                         <div className="row">
                             <div className="col">
                                 <div className="col">
-                                    <label>Mobile No </label>
+                                    <label>Mobile No {eventData.mobileno.length > 10 && <span style={{ "color": "red", "font-weight": "bolder" }}>contains 10 characters</span>}</label>
                                     <input type="text" className="form-control" placeholder="Mobile No" name="mobileno" value={eventData.mobileno} onChange={inputHandle} />
                                 </div>
                             </div>
