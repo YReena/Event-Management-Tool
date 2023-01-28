@@ -1,0 +1,198 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Jost", sans-serif;
+}
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+
+html{
+    font-size: 62.5%;
+}
+
+ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+li{
+    list-style: none;
+    font-size: 12px;
+}
+/* ====================   navbar =====================*/
+.main-nav{
+    margin-top: 50px;
+    width: 100%;
+    height: 8rem;
+    display: grid;
+    grid-template-columns: 10rem 1fr 2fr 2fr 10rem;
+    box-shadow: rgba(50, 50,93, 0.25)10px 50px 100px -20px,
+    rgba(0,0, 0,0.3)0px 30px 60px -30px;
+    border-bottom: 2px solid rgb(182, 178, 178);
+}
+
+.logo{
+    display: grid;
+    grid-column: 2/3;
+    justify-content: start;
+    align-content: center;
+}
+.logo h2{
+    font-size: 2rem;
+    font-weight: 400;
+    background: -webkit-linear-gradient(#eee, rgb(69,57,248));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.logo h2 span{
+    font-size: 3rem;
+}
+
+.menu-link{
+    grid-column: 3/4;
+}
+.menu-link ul{
+    height: 8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-menu{
+    grid-column: 4/5; 
+}
+.login-menu ul{
+    height: 8rem;
+    display: grid;
+    grid-template-columns: 3fr repeat(2, 1fr);
+    align-items: center;
+    text-align: right; 
+}
+.login-menu ul li:first-child{
+    grid-column: 2/3;
+}
+
+/* ======================== Login Page ==================*/
+.login {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.login-box {
+    width: 450px;
+    height: 300px;
+    border: 2px solid #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(219, 217, 217, 0.5);
+}
+
+.login-box h2 {
+    margin-top: 10px;
+    text-align: center;
+    color: #234b87;
+    ;
+}
+
+.login_input input {
+    width: 80%;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.login_input label {
+    margin-left: 20px;
+}
+
+.login-box button {
+    margin-left: 25px;
+    background-color: #234b87;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+}
+/* ========================= event rgistration page =====================*/
+.form {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.container {
+    padding-top: 10px;
+    border: 2px solid #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(219, 217, 217, 0.5);
+    width: 80%;
+    background-color: white;
+}
+
+#form-handling {
+    text-align: center;
+    padding-bottom: 5px;
+    color: #234b87;
+}
+
+.container input {
+    margin-bottom: 20px;
+}
+
+.btn-color {
+    background-color: #234b87;
+    color: white;
+    width: 90px;
+    height: 40px;
+    border-style: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    float: right;
+}
+
+/* =====================================Dashboard =============================*/
+.Dashboard-content{
+    height: 80vh;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./assets/date_picker.svg');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: right;
+}
+
+/*===================================Error ===================*/
+.error{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+/*==================eventlist==================*/
+.eventlist-box{
+    padding-top: 10px;
+    border: 2px solid #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(219, 217, 217, 0.5);
+    width: 80%;
+    background-color: white; 
+ 
+
+}
+.event-base-form{
+    display: grid;
+    padding-left: 100px;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 180px;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+
+.Event-box{
+    margin-top: 40px;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
