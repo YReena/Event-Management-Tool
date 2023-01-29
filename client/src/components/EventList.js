@@ -11,11 +11,11 @@ const EventList = () => {
   const getData = () => {
     axios.get("/eventlist").then((res) => {
       setGetEvent(res.data);
+
     }).catch((err) => {
       console.log(err);
     })
   }
-
 
   return (
     <div>
@@ -28,15 +28,15 @@ const EventList = () => {
                 <><div>
 
                   <div class="card text-center Event-box">
-                    <div class="card-header">
-                      Meeting Organiser :  {ele.firstname + ele.lastname} 
+                    <div class="card-header text-bolder">
+                     <p> Meeting Organiser </p>{ele.firstname + ele.lastname} 
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title">{ele.dates + "  " + ele.stime}</h5>
+                      <h5 class="card-title">{ele.dates+" "+ele.stime}</h5>
                       <p class="card-text">{ele.location}</p>
                     </div>
-                    <div class="card-footer text-muted">
-                      {ele.agenda}
+                    <div class="card-footer text-muted text-bolder">
+                     <p>Agenda</p> {ele.agenda}
                     </div>
                   </div>
                 </div>

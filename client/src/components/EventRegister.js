@@ -15,7 +15,7 @@ const EventRegister = () => {
 
     const [error, setError] = useState("");
     const [eventData, setEventData] = useState({
-        firstname: "", lastname: "", location: "", stime: "", dates: "", mobileno: "", agenda: ""
+        firstname: "", lastname: "", location: "", stime: "", dates: new Date(), mobileno: "", agenda: ""
     })
     let name, value;
     const inputHandle = (e) => {
@@ -32,6 +32,7 @@ const EventRegister = () => {
         //  console.log(SendData);
         setError("");
         axios.post("/eventregister", eventData).then((res) => {
+            console.log(res);
             if (res.status === 201) {
                 window.alert("Event has been created Successfully");
                 navigate("/eventlist");
@@ -46,6 +47,9 @@ const EventRegister = () => {
             if (err.response.status === 302) {
                 console.log(err.response.status);
                 setError("Please select other time slot");
+            }
+            if (err.response.status === 400) {
+                setError("Date should be greater than date");
             }
         })
         //notify();
@@ -78,11 +82,11 @@ const EventRegister = () => {
                             </div>
                             <div className="col">
                                 <label>Date</label>
-                                <input type="date" className="form-control" placeholder="date" name="dates" value={eventData.dates} onChange={inputHandle} />
+                                <input type="date" className="form-control"   placeholder="date" name="dates" value={eventData.dates} onChange={inputHandle} />
                             </div>
                             <div className="col">
                                 <label>Start Time</label>
-                                <input type="time" className="form-control" placeholder="stime" name="stime" value={eventData.stime} onChange={inputHandle} step="-1" />
+                                <input type="time" className="form-control" placeholder="stime" name="stime" value={eventData.stime} onChange={inputHandle}/>
                             </div>
                         </div>
                         <div className="row">

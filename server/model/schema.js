@@ -36,7 +36,7 @@ const eventRegister = new mongoose.Schema({
         type : String
     },
     dates:{
-        type : String
+        type : Date
     },
     agenda :{
        type : String
