@@ -6,16 +6,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const EventRegister = () => {
-    
-     const navigate = useNavigate();
+
+    const navigate = useNavigate();
     // const notify = () => toast.success("Registered Successfully...",{
     //     autoClose: 5000,
     //     draggable: true,
     // });
 
     const [error, setError] = useState("");
+    const [errortime, setErrorTime] = useState();
     const [eventData, setEventData] = useState({
-        firstname: "", lastname: "", location: "", stime: "", dates: new Date(), mobileno: "", agenda: ""
+        firstname: "", lastname: "", location: "", stime: "", dates: "", mobileno: "", agenda: ""
     })
     let name, value;
     const inputHandle = (e) => {
@@ -24,13 +25,25 @@ const EventRegister = () => {
         setEventData({ ...eventData, [name]: value });
 
     }
+    // useEffect(() => {
+    //     errorTimeMal();
+    // }, [])
 
-
+    // function errorTimeMal() {
+    //     console.log(errortime);
+    //     let errTime = parseInt(errortime);
+    //     setError(errTime + 1);
+    //     if (errTime.length == 1) {
+    //         this.errTime = "0"+(this.errTime.toString());
+    //         setErrorTime(errTime);
+    //     }
+    // }
     const sunbmitInfo = async (e) => {
         e.preventDefault();
         //  const SendData = await axios.post("/eventregister" , eventData);
         //  console.log(SendData);
         setError("");
+         
         axios.post("/eventregister", eventData).then((res) => {
             console.log(res);
             if (res.status === 201) {
@@ -45,11 +58,16 @@ const EventRegister = () => {
                 setError("Please enter all required field");
             }
             if (err.response.status === 302) {
-                console.log(err.response.status);
-                setError("Please select other time slot");
+                setErrorTime(err.response.data);
+                setError(`please select time slot other than ${err.response.data + ":00" + "-" }${ 1 + parseInt(err.response.data ) + ":00"} or date or location`);
             }
             if (err.response.status === 400) {
+                setErrorTime(err.response.data);
                 setError("Date should be greater than date");
+            }
+            if (err.response.status === 401) {
+                console.log(err.response.status);
+                setError("Mobile no should be 10 digits");
             }
         })
         //notify();
@@ -63,7 +81,7 @@ const EventRegister = () => {
                     <form method="POST">
                         <div className="row">
                             <div className="col">
-                                <label>First Name{}</label>
+                                <label>First Name{ }</label>
                                 <input type="text" className="form-control" placeholder="First Name" name="firstname" value={eventData.firstname} onChange={inputHandle} />
 
                             </div>
@@ -82,11 +100,11 @@ const EventRegister = () => {
                             </div>
                             <div className="col">
                                 <label>Date</label>
-                                <input type="date" className="form-control"   placeholder="date" name="dates" value={eventData.dates} onChange={inputHandle} />
+                                <input type="date" className="form-control" placeholder="date" name="dates" value={eventData.dates} onChange={inputHandle} />
                             </div>
                             <div className="col">
                                 <label>Start Time</label>
-                                <input type="time" className="form-control" placeholder="stime" name="stime" value={eventData.stime} onChange={inputHandle}/>
+                                <input type="time" className="form-control" placeholder="stime" name="stime" value={eventData.stime} onChange={inputHandle} />
                             </div>
                         </div>
                         <div className="row">
@@ -106,7 +124,7 @@ const EventRegister = () => {
                             </div>
                             <div className="col btn_submit">
                                 <button className='btn-color' onClick={sunbmitInfo}>Register</button>
-                              <ToastContainer />
+                                <ToastContainer />
                             </div>
                         </div>
                     </form>
